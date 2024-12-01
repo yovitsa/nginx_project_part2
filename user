@@ -5,7 +5,7 @@ if [ "$EUID" -ne 0 ]; then
 	exit 1
 fi
 
-#Creating a new system user moving a new yser to a new home directory
+#Creating a new user with specified home directory and a non-login shell
 useradd -r -d /var/lib/webegen -s /usr/bin/nologin webgen 
 
 #Creating new directories
