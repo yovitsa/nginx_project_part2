@@ -368,6 +368,8 @@ Your output should look something similar to the below.
 
 ![ports](/2420_assignment_3_part_2/assets/ports.png)
 
+## Step 5
+
 ### Test your load balancer
 
 It is time to test your load balancer.
@@ -375,7 +377,7 @@ Enter the load balancer IP address in your browser
 You can see the load balancer IP address in your Digital Ocean acount.
 
 Your output should be similar to the image below.
-Refresh the page (you may need to this a couple of times) and if everything went well your IP address should change.
+Refresh the page (you may need to do this a couple of times) and if everything went well your IP address should change.
 That means that load balancer is working properly
 
 ![It works](/2420_assignment_3_part_2/assets/it_works_part_2.png)
