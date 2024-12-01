@@ -66,7 +66,8 @@ Please note that it might take a few minutes for a load balancer to be created.
 
 ![image](/2420_assignment_3_part_2/assets/load.png)
 
-Click on the load balancer to check if your droplets are connected correctly, it should look similar to the image below.
+Check Load Balancer Status
+To check the status of your load balancer from the DigitalOcean Control Panel, click Networking, then click the Load Balancers tab. The page lists the load balancers set up in your account. Click your target Droplet’s load balancer.
 
 ![image](/2420_assignment_3_part_2/assets/healthy_droplets.png)
 
@@ -93,7 +94,7 @@ Run the following command:
 
 Copy the content from the file to your `generate-index` file from this repository `generate-index` file.
 
-## Step 2
+
 
 ### Generate Index service and timer
 
@@ -190,10 +191,6 @@ Also if you are making any changes to your service files. run the command below.
 
 After running this command run the start / enable command services again.
 
-
-## Step 3
-
-
 ### Install and configure  nginx
 
 1. **Install nginx**
@@ -217,7 +214,7 @@ At the top of the `nginx.conf` file write the following statement
      user webgen;
      
 
-In the server block code of you nginx file replace the following code:
+In the server block code of your `nginx.conf` file replace the following code:
 
     location / {
       root /usr/share/nginx/html;
@@ -319,9 +316,8 @@ Your output should look similar to the below.
 
 ![works](/2420_assignment_3_part_2/assets/it_works_part_2.png)
 
-### Step 4:
 
-## Configure uncomplicated Firewall(ufw)
+### Configure uncomplicated Firewall(ufw)
 
 1. **Install and Configure UFW**:
 
@@ -372,7 +368,7 @@ Your output should look something similar to the below.
 
 ![ports](/2420_assignment_3_part_2/assets/ports.png)
 
-### Step 6
+### Test your load balancer
 
 It is time to test your load balancer.
 Enter the load balancer IP address in your browser
@@ -421,6 +417,9 @@ To update the arch server run the command below.
 To reboot your server, run the command below
 
     sudo systemctl reboot
+
+
+Load balancer troublushoot
 
 
 
