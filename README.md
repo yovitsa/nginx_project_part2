@@ -1,14 +1,85 @@
-# 2420 Assignment 3 - Part 1
+# 2420 Assignment 3 - Part 2
 
-This is step-by-step process to set up a web server using Arch Linux.
+This is step-by-step process to set up a load balancer for two web servers.
 
 Requirements:
 
-1. Arch linux droplet
-2. Text editor (nvim, vim, nano)
+1. Digital Ocean Account
+2. Arch Linux droplets
+3. Text editor (nvim, vim, nano)
 
 
-## Step 1
+## Create two new droplets on your Digital Ocean Account.
+
+If you need help setting up the Digital Ocean droplet and setting the SSH authentication on you droplets you may see this tutorial first [Setting up a Arch Linux web server on Digital Ocean](https://github.com/yovitsa/2420_assignment_1)
+
+### Additional to the tutorial from the link, for this tutorial assign these attributes to your droplets:
+
+- Region: Choose the geographically closest to your location
+- Insure that you create 2 droplets
+- Assign name to your droplets
+- Assign the tag **web** to both droplets.
+
+## Create a load balancer on your Digital Ocean account.
+
+Start by creating a load balancer using the Create button at the top of the control panel. Alternatively, use the Create load balancer button on the Load Balancers overview page.
+
+On the creation page, you:
+
+Click on Regional for the load balancer type.
+Choose a datacenter region, your load balancer and its backend Droplets need to be in the same datacenter.
+
+![alt text](/2420_assignment_3_part_2/assets/regions%20load%20balancer.png)
+
+Keep the VPC network as default network for the datacenter region. 
+
+Choose the load balancer’s Scaling configuration.
+The load balancer’s scaling configuration allows you to adjust the load balancer’s number of nodes.
+You can leave the default setting, ensure that the number of droplets is two.
+
+![image](/2420_assignment_3_part_2/assets/scalling%20configuration.png)
+
+
+
+Connect Droplets to the load balancer.
+Use the Search for Droplet or a tag search bar to add Droplets to your load balancer.
+You can use one tag per load balancer.
+Type web in the search field.
+
+Forwarding rules define how traffic is routed from the load balancer to its backend Droplets. You need at least one rule.
+
+The default route is HTTP port 80 on the load balancer to HTTP port 80 on the backend Droplets.
+![iamge](/2420_assignment_3_part_2/assets/droplets%20connection.png)
+
+
+
+Finalize and create, which includes Choose a name and Select project. Load balancer names must be unique and contain alphanumeric characters, dashes, and periods only. You can rename load balancers at any time after creation by clicking on the existing name on the load balancer page.
+
+Leave the advanced settings as they are. Do not change anything.
+
+![image](/2420_assignment_3_part_2/assets/create%20button.png)
+
+
+
+Once you have created a  load balancer, you can view and manage them on the load balancer index page.
+Please note that it might take a few minutes for a load balancer to be created.
+
+![image](/2420_assignment_3_part_2/assets/load.png)
+
+Click on the load balancer to check if your droplets are connected correctly, it should look similar to the image below.
+
+![image](/2420_assignment_3_part_2/assets/healthy_droplets.png)
+
+
+
+
+## Step 3
+
+Copy the content from the file to your `generate-index` file from this repository `generate-index` file.
+
+## Step 4
+
+### **The step below you will have to repeat in both of your droplets**
 
 Run the user script
 The `user` script will create all the necessary base directories and files for the new `webgen` user. 
@@ -55,7 +126,7 @@ Copy the code below into your `generate-index.service` file.
       [Service]
       User=webgen
       Group=webgen
-      ExecStart=/var/lib/webgen/bin/generate-index
+      ExecStart=/var/lib/webgen/bin/generate_index
       RemainAfterExit=yes
       Restart=on-failure
 
@@ -108,7 +179,7 @@ Check the status of your services by running the commands below:
    
 If everything went well, your output when running the status for `generate-index.service` should look similar to the image below
 
-![Service Status](https://github.com/yovitsa/2420_Assignment_3_Part_1/blob/main/assets/services_image.png "Status running")
+![Service Status](/2420_assignment_3_part_2/assets/services_image.png)
 
 
 
@@ -146,6 +217,21 @@ At the top of the `nginx.conf` file write the following statement
      user webgen;
      
 
+In the server block code of you nginx file replace the following code:
+
+    location / {
+      root /usr/share/nginx/html;
+      index index.html index.htm;
+    }
+
+Replace the code above with code below:
+
+    location / {
+      root /var/lib/webgen/HTML;
+      index index.html index.html;
+    }
+
+
 Save the file and exit. 
 Do not make any other changes to the `nginx.conf`.
 
@@ -177,18 +263,24 @@ Copy the code below
      
    
     server {
-    
-          listen 80;
-          listen [::]:80;
+    listen 80;
+    server_name <your-droplet-ip>;
 
-          server_name <your droplet ip address>;
-
-          root /var/lib/webgen/HTML
-          index index.html;cat 
-
-          location / {
-            try_files $uri $uri/ =404;
+    # Root directory for the file server
+    location /documents {
+        root /var/lib/webgen;
+        autoindex on;                # Enables the directory listing
+        autoindex_exact_size off;    # Shows file sizes, human-readable
+        autoindex_localtime on;      # Displays file timestamps
     }
+
+    # Default location for other requests (optional)
+    location / {
+        root /var/lib/webgen/HTML;
+        index index.html;
+    }
+}
+
 
 Save and exit the file.
 
@@ -202,12 +294,10 @@ http {
 
 Save the `nginx.conf` file and exit, do not change anything else.
 
-}
      
 To enable a site, create a symlink by running the command below:
 
     ln -s /etc/nginx/sites-available/webgen.conf /etc/nginx/sites-enabled/webgen.conf
-
 
 
 4. **Troubleshoot nginx configuration**:
@@ -227,7 +317,7 @@ Run the command below to start and enable nginx services
 Test your web page by typing your ip address in your browser.
 Your output should look similar to the below.
 
-![ufw](https://github.com/yovitsa/2420_Assignment_3_Part_1/blob/main/assets/It%20Works.png)
+![works](/2420_assignment_3_part_2/assets/it_works_part_2.png)
 
 ### Step 4:
 
@@ -235,7 +325,7 @@ Your output should look similar to the below.
 
 1. **Install and Configure UFW**:
 
-Run the command below to update your Arch linux distirbution, you want to have most recent version.
+Run the command below to update your Arch linux distribution, you want to have most recent version.
 
     sudo pacman -Syu
 
@@ -280,15 +370,19 @@ Check the status again, to confirm that everything is working.
 
 Your output should look something similar to the below.
 
-![ports](https://github.com/yovitsa/2420_Assignment_3_Part_1/blob/main/assets/ports.png)
+![ports](/2420_assignment_3_part_2/assets/ports.png)
 
-### Step 5
+### Step 6
 
-Test your web server by entering your ip addres into your browser
+It is time to test your load balancer.
+Enter the load balancer IP address in your browser
+You can see the load balancer IP address in your Digital Ocean acount.
 
-Your output should be similar to the image below
+Your output should be similar to the image below.
+Refresh the page (you may need to this a couple of times) and if everything went well your IP address should change.
+That means that load balancer is working properly
 
-![It works](https://github.com/yovitsa/2420_Assignment_3_Part_1/blob/main/assets/It%20Works.png)
+![It works](/2420_assignment_3_part_2/assets/it_works_part_2.png)
 
 ## Troubleshoot and possible issues
 
@@ -324,7 +418,7 @@ To update the arch server run the command below.
 
     sudo pacman -Syu
 
-To reboot you server run the command below
+To reboot your server, run the command below
 
     sudo systemctl reboot
 
