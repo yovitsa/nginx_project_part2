@@ -29,7 +29,7 @@ On the creation page, you:
 Click on Regional for the load balancer type.
 Choose a datacenter region, your load balancer and its backend Droplets need to be in the same datacenter.
 
-![alt text](/2420_assignment_3_part_2/assets/regionsload20balancer.png "Regions")
+[![alt text](https://gitlab.com/yovitsa/2420_assignment_3_part_2/-/blob/main/assets/regions_load_balancer.png"Regions")]
 
 Keep the VPC network as default network for the datacenter region. 
 
