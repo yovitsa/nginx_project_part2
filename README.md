@@ -386,9 +386,13 @@ That means that load balancer is working properly
 ### Test your file server
 
 Enter `<your-ip-address/documents>` in your browser. 
+
 Use your any of the ip addresses, but to test your load balancer use the load balancer ip.
+
 Your output should be similiar to the image below, refresh teh page a few times and you you server will change.
+
 Click on the `file_one` or `file_two` and the file will be downloaded.
+
 Your browser might show warnings that the file is insecure, you may ignore that and go ahead and downlaod the file.
 
 ## Troubleshoot and possible issues
