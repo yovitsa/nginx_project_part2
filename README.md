@@ -283,11 +283,11 @@ Save and exit the file.
 
 Append include sites-enabled/*; to the end of the http block in the `nginx.conf` file:
 
-/etc/nginx/nginx.conf
-http {
-    ...
-    include /etc/nginx/sites-enabled/*;
-}
+    /etc/nginx/nginx.conf
+    http {
+        ...
+        include /etc/nginx/sites-enabled/*;
+    }
 
 Save the `nginx.conf` file and exit, do not change anything else.
 
