@@ -6,4 +6,5 @@ OnCalendar=*-*-* 05:00:00
 Persistent=True
 
 [Install]
+# Timer starts when the system is initialized and the timers group is activated.
 WantedBy=timers.target
