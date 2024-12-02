@@ -382,6 +382,15 @@ That means that load balancer is working properly
 
 ![It works](/2420_assignment_3_part_2/assets/it_works_part_2.png)
 
+## Step 6
+### Test your file server
+
+Enter `<your-ip-address/documents>` in your browser. 
+Use your any of the ip addresses, but to test your load balancer use the load balancer ip.
+Your output should be similiar to the image below, refresh teh page a few times and you you server will change.
+Click on the `file_one` or `file_two` and the file will be downloaded.
+Your browser might show warnings that the file is insecure, you may ignore that and go ahead and downlaod the file.
+
 ## Troubleshoot and possible issues
 
 
@@ -421,7 +430,9 @@ To reboot your server, run the command below
     sudo systemctl reboot
 
 
-Load balancer troublushoot
+
+
+
 
 
 
@@ -438,4 +449,7 @@ Load balancer troublushoot
 
   4. `timer`
   https://wiki.archlinux.org/title/Systemd/Timers
+
+  5. `Load balancer troublushoot`
+  https://www.digitalocean.com/community/questions/how-to-troubleshoot-2-droplets-with-load-balancer
 
