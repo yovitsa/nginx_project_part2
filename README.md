@@ -29,15 +29,15 @@ On the creation page, you:
 Click on Regional for the load balancer type.
 Choose a datacenter region, your load balancer and its backend Droplets need to be in the same datacenter.
 
-![alt text](https://gitlab.com/yovitsa/2420_assignment_3_part_2/-/blob/main/assets/it_works_part_2.png?ref_type=heads)
-![akt text](assets/it_works_part_2.png)
+
+![regions](assets/regions_load_balancer.png)
 Keep the VPC network as default network for the datacenter region. 
 
 Choose the load balancer’s Scaling configuration.
 The load balancer’s scaling configuration allows you to adjust the load balancer’s number of nodes.
 You can leave the default setting, ensure that the number of droplets is two.
 
-![image](/2420_assignment_3_part_2/assets/scalling%20configuration.png)
+![image](/assets/scalling%20configuration.png)
 
 
 
@@ -49,7 +49,7 @@ Type web in the search field.
 Forwarding rules define how traffic is routed from the load balancer to its backend Droplets. You need at least one rule.
 
 The default route is HTTP port 80 on the load balancer to HTTP port 80 on the backend Droplets.
-![iamge](/2420_assignment_3_part_2/assets/droplets%20connection.png)
+![iamge](/assets/droplets%20connection.png)
 
 
 
@@ -57,19 +57,19 @@ Finalize and create, which includes Choose a name and Select project. Load balan
 
 Leave the advanced settings as they are. Do not change anything.
 
-![image](/2420_assignment_3_part_2/assets/create%20button.png)
+![image](/assets/create%20button.png)
 
 
 
 Once you have created a  load balancer, you can view and manage them on the load balancer index page.
 Please note that it might take a few minutes for a load balancer to be created.
 
-![image](/2420_assignment_3_part_2/assets/load.png)
+![image](/assets/load.png)
 
 Check Load Balancer Status
 To check the status of your load balancer from the DigitalOcean Control Panel, click Networking, then click the Load Balancers tab. The page lists the load balancers set up in your account. Click your target Droplet’s load balancer.
 
-![image](/2420_assignment_3_part_2/assets/healthy_droplets.png)
+![image](/assets/healthy_droplets.png)
 
 
 
@@ -180,7 +180,7 @@ Check the status of your services by running the commands below:
    
 If everything went well, your output when running the status for `generate-index.service` should look similar to the image below
 
-![Service Status](/2420_assignment_3_part_2/assets/services_image.png)
+![Service Status](/assets/services_image.png)
 
 
 
@@ -314,7 +314,7 @@ Run the command below to start and enable nginx services
 Test your web page by typing your ip address in your browser.
 Your output should look similar to the below.
 
-![works](https://gitlab.com/yovitsa/2420_assignment_3_part_2/-/blob/main/assets/it_works_part_2.png?ref_type=heads)
+![works](/assets/it_works_part_2.png?ref_type=heads)
 
 
 ## Step 5
@@ -329,7 +329,7 @@ Your output should be similar to the image below.
 Refresh the page (you may need to do this a couple of times) and if everything went well your IP address should change.
 That means that load balancer is working properly
 
-![It works](/2420_assignment_3_part_2/assets/it_works_part_2.png)
+![It works](/assets/it_works_part_2.png)
 
 ## Step 6
 ### Test your file server
