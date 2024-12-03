@@ -201,7 +201,7 @@ Run the command below to update your Arch linux distribution, you want to have m
 
 Run the command below to install the nginx package
 
-    sudo pacman --S nginx
+    sudo pacman -S nginx
 
 
 
@@ -314,59 +314,8 @@ Run the command below to start and enable nginx services
 Test your web page by typing your ip address in your browser.
 Your output should look similar to the below.
 
-![works](/2420_assignment_3_part_2/assets/it_works_part_2.png)
+![works](https://gitlab.com/yovitsa/2420_assignment_3_part_2/-/blob/main/assets/it_works_part_2.png?ref_type=heads)
 
-
-### Configure uncomplicated Firewall(ufw)
-
-1. **Install and Configure UFW**:
-
-Run the command below to update your Arch linux distribution, you want to have most recent version.
-
-    sudo pacman -Syu
-
-Run the command below to install the nginx package
-
-    sudo pacman -S ufw
-
-Run the command below to enable and start the service.
-
-    sudo systemctl enable --now ufw.service
-
-Run the command below to check the status of ufw with the command
-
-    sudo ufw status verbose
-
-It should return inactive if you have just installed ufw for the first time.
-
-You want to allow ssh connection to your server
-Run any of the commands below to allow ssh from anywhere.
-
-    sudo ufw allow ssh
-    sudo ufw allow 22 # designated ssh port
-
-You want to limit ssh connections. This will deny an incoming address if they attempt 6 initiations in 30 seconds.
-
-    sudo ufw limit ssh
-
-You need to allow `http` for you web server.
-Run the command below.
-
-    sudo ufw allow http
-
-After defining the rules for your firewall, turn on your firewall by running the command below
-
-**Do not run this command before applying rules to your firewall, especially for ssh**
-
-    sudo ufw enable
-
-Check the status again, to confirm that everything is working.
-
-    sudo ufw status verbose
-
-Your output should look something similar to the below.
-
-![ports](/2420_assignment_3_part_2/assets/ports.png)
 
 ## Step 5
 
