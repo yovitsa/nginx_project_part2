@@ -356,7 +356,7 @@ Click on the `file_one` or `file_two` and the file will be downloaded.
 Your browser might show warnings that the file is insecure, you may ignore that and go ahead and downlaod the file.
 
 ![It works](/assets/s1.png)
-![It works](/assets/s1.png)
+![It works](/assets/s2.png)
 
 ## Troubleshoot and possible issues
 
