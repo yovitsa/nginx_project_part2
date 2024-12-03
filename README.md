@@ -222,22 +222,7 @@ At the top of the `nginx.conf` file write the following statement
      
      user webgen;
      
-
-In the server block code of your `nginx.conf` file replace the following code:
-
-    location / {
-      root /usr/share/nginx/html;
-      index index.html index.htm;
-    }
-
-Replace the code above with code below:
-
-    location / {
-      root /var/lib/webgen/HTML;
-      index index.html index.html;
-    }
-
-
+     
 Save the file and exit. 
 Do not make any other changes to the `nginx.conf`.
 
