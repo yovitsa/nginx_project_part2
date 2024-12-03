@@ -320,11 +320,11 @@ Run the command below to start and enable nginx services
     sudo systemctl start nginx.service
     sudo systemctl enable nginx.service  
 
-Test your web page by typing your ip address in your browser.
+Test your web pages by typing your ip addresses in your browser.
 Your output should look similar to the below.
 
-![works](/assets/it_works_part_2.png?ref_type=heads)
-
+![works](/assets/droplet1.png)
+![works](/assets/droplet1.png)
 
 ## Step 5
 
@@ -337,8 +337,8 @@ You can see the load balancer IP address in your Digital Ocean acount.
 Your output should be similar to the image below.
 Refresh the page (you may need to do this a couple of times) and if everything went well your IP address should change.
 That means that load balancer is working properly
-
-![It works](/assets/it_works_part_2.png)
+![It works](/assets/d1.png)
+![It works](/assets/d2.png)
 
 ## Step 6
 ### Test your file server
@@ -347,11 +347,14 @@ Enter `<your-ip-address/documents>` in your browser.
 
 Use your any of the ip addresses, but to test your load balancer use the load balancer ip.
 
-Your output should be similiar to the image below, refresh teh page a few times and you you server will change.
+Your output should be similiar to the image below, refresh the page a few times and you you server will change.
 
 Click on the `file_one` or `file_two` and the file will be downloaded.
 
 Your browser might show warnings that the file is insecure, you may ignore that and go ahead and downlaod the file.
+
+![It works](/assets/s1.png)
+![It works](/assets/s1.png)
 
 ## Troubleshoot and possible issues
 
