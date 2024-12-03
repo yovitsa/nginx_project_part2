@@ -1,21 +1,17 @@
 [Unit]
 Description=generate-index html
-# Ensure the service starts only after the network is fully up
-Wants=network-online.target
-# Specify that this service should start after the network is fully online
-After=network-online.target
 
 [Service]
 User=webgen
 Group=webgen
 
-# Specify the file path of the script to execute when the service starts
+#Specify the file path of the script to execute when the service starts
 ExecStart=/var/lib/webgen/bin/generate_index
 
-#Keeps the service in an active state even after the main process has completed.
+#Service stays active state even after the main process has completed.
 RemainAfterExit=yes
 
-#: Automatically restarts the service if it exits with a failure
+#Automatically restarts the service if it exits with a failure
 Restart=on-failure
 
 
