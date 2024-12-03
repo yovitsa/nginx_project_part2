@@ -119,20 +119,27 @@ You need to configure your `generate-index.service`
 Copy the code below into your `generate-index.service` file.
       
 
-      [Unit]
-      Description=generate-index html
-      Wants=network-online.target
-      After=network-online.target
+    [Unit]
+    Description=generate-index html
 
-      [Service]
-      User=webgen
-      Group=webgen
-      ExecStart=/var/lib/webgen/bin/generate_index
-      RemainAfterExit=yes
-      Restart=on-failure
+    [Service]
+    User=webgen
+    Group=webgen
 
-      [Install]
-      WantedBy=multi-user.target 
+    #Specify the file path of the script to execute when the service starts
+    ExecStart=/var/lib/webgen/bin/generate_index
+
+    #Service stays active state even after the main process has completed.
+    RemainAfterExit=yes
+
+    #Automatically restarts the service if it exits with a failure
+    Restart=on-failure
+
+
+    [Install]
+    # Service starts during system boot and access the non-graphic multi-user mode
+    WantedBy=multi-user.target
+    
 
 2. `generate-index.timer` will start your service every day at 05:00
 
@@ -161,7 +168,9 @@ Copy the code below to you `generate-index.timer` file.
     Persistent=True
 
     [Install]
+    # Timer starts when the system is initialized and the timers group is activated.
     WantedBy=timers.target
+
 
 Run the following commands to start and enable the services:
 
