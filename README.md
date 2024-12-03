@@ -382,23 +382,6 @@ Run the command below to check that apache is no longer using the port 80.
     lsof -i :80
 
 
-Issue 2: iptables  Error
-While trying to set up UFW (Uncomplicated Firewall), I got this warning:
-iptables v1.8.10 (legacy): can't initialize iptables table 'filter': Table does not exist (do you need to insmod?).
-
-The problem was caused by an outdated kernel or missing modules needed for iptables. I also found that the iptables.service was inactive. To fix this, I updated my Arch Linux server and rebooted it. After the update and reboot, iptables was working, and I was able to configure UFW without any issues
-
-To update the arch server run the command below.
-
-    sudo pacman -Syu
-
-To reboot your server, run the command below
-
-    sudo systemctl reboot
-
-
-
-
 
 
 
