@@ -337,6 +337,8 @@ You can see the load balancer IP address in your Digital Ocean acount.
 Your output should be similar to the image below.
 Refresh the page (you may need to do this a couple of times) and if everything went well your IP address should change.
 That means that load balancer is working properly
+
+
 ![It works](/assets/d1.png)
 ![It works](/assets/d2.png)
 
