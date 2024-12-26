@@ -1,4 +1,4 @@
-# 2420 Assignment 3 - Part 2
+# 2420 - Part 2
 
 This is step-by-step process to set up a load balancer for two web servers.
 
